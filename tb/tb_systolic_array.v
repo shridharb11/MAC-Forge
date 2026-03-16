@@ -98,8 +98,7 @@ module tb_systolic_array;
         data_in_valid = 2'b01;
         @(posedge clk);
 
-        // ---- Feed cycle 1: row0=A[0][1]=2, row1=A[0][1]=2 ----
-        // Actually for row 1 (k=1) we feed column 1 of A: A[0][1]=2
+        // ---- Feed cycle 1: row0=A[1][0]=3, row1=A[0][1]=2 ----
         @(negedge clk);
         data_in       = {8'd2, 8'd3};
         data_in_valid = 2'b11;
@@ -174,7 +173,10 @@ module tb_systolic_array;
         $finish(0);
     end
 
-    // Collect non-zero valid results from bottom of each column.
+    // Collect valid results from the bottom of each column.
+    // Note: this approach relies on the test matrices not producing
+    // zero intermediate results at the array bottom edge.  For the
+    // chosen test vectors (non-zero products), this is always true.
     always @(posedge clk) begin
         if (result_out_valid[0] && get_result(0) != 0) begin
             $display("t=%0t col0 result=%0d", $time, get_result(0));
