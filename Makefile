@@ -1,4 +1,4 @@
-# Makefile for MAC-Forge systolic array multiplier
+# Makefile for Tiny TPU systolic array multiplier
 # Requires Icarus Verilog (iverilog / vvp)
 
 IVERILOG  = iverilog

@@ -1,5 +1,5 @@
-# MAC-Forge
-MAC-Forge is a Verilog HDL project that implements a systolic array based matrix multiplication engine. This project focuses on the fundamental building block: a parallel grid of Multiply-Accumulate (MAC) units.
+# Tiny TPU
+Tiny TPU is a Verilog HDL project that implements a systolic array based matrix multiplication engine. This project focuses on the fundamental building block: a parallel grid of Multiply-Accumulate (MAC) units.
 # Overview on TPU's MMU
 TPU features a weight stationary systolic array, meaning a set of weights may be loaded in once but used for many operations. The array is fully pipelined, performing a  
 4 x 4 matrix multiply in just 8 (2n cycles for n x n matrix) cycles. It is composed of many processing elements (PEs), which contain a small amount of memory and control logic, and a single multiply accumulate data path. A complete Matrix Multiply starts at the top left corner of the Systolic array, and is piped diagonally downward. In the first cycle of a multiply, input memory supplies data for only the top left PE. After one cycle, the first PE activates its neighbors below and to the right, creating the diagonally downward piping.
